@@ -34,9 +34,12 @@ import AdminOrdersPage from "./pages/admin/AdminOrdersPage";
 import AdminProductsPage from "./pages/admin/AdminProductsPage";
 import AdminUsersPage from "./pages/admin/AdminUsersPage";
 
+import ScrollTotop from "./utils/ScrollToTop";
+
 function App() {
   return (
     <BrowserRouter>
+    <ScrollTotop/>
       <HeaderComponent />
       <Routes>
         <Route element={<RoutesWithUserChatComponent />}>

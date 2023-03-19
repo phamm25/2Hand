@@ -1,12 +1,17 @@
-const e = require("express");
 const express = require("express");
+const fileUpload = require("express-fileupload")
+const cookieParser = require("cookie-parser")
 const app = express();
 const port = 3001;
+
+app.use(express.json())
+app.use(cookieParser())
+app.use(fileUpload())
 
 const apiRoutes = require("./routes/apiRoutes");
 
 app.get("/", async (req, res, next) => {
-  res.json({ message: "API running" });
+  res.json({ message: "API running..." });
 });
 
 // mongodb connection
@@ -16,10 +21,9 @@ connectDB();
 app.use("/api", apiRoutes);
 
 app.use((error, req, res, next) => {
-  console.log(error);
+  console.error(error);
   next(error);
 });
-
 app.use((error, req, res, next) => {
   res.status(500).json({
     message: error.message,
@@ -30,3 +34,4 @@ app.use((error, req, res, next) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+

@@ -1,5 +1,4 @@
-const getProducts = (req,res) => {
-    res.send("handling product routes")
-}
-
-module.exports = getProducts
+const getProducts = (req, res) => {
+  res.send("Handling product routes, e.g. search for products");
+};
+module.exports = getProducts;

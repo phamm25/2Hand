@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// common components:
+// components:
 import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from "./components/FooterComponent";
 
-// user components:
+//user components:
 import RoutesWithUserChatComponent from "./components/user/RoutesWithUserChatComponent";
 
-// Publicly available pages
+// publicly available pages:
 import HomePage from "./pages/HomePage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import ProductListPage from "./pages/ProductListPage";
@@ -15,35 +15,34 @@ import CartPage from "./pages/CartPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
-import ProtectedRoutesComponet from "./components/ProtectedRoutesComponent";
+import ProtectedRoutesComponent from "./components/ProtectedRoutesComponent";
 
-// Protected user pages
+// protected user pages:
 import UserProfilePage from "./pages/user/UserProfilePage";
 import UserOrdersPage from "./pages/user/UserOrdersPage";
-import UserOrderDetailsPage from "./pages/user/UserOrderDetailsPage";
 import UserCartDetailsPage from "./pages/user/UserCartDetailsPage";
+import UserOrderDetailsPage from "./pages/user/UserOrderDetailsPage";
 
-// Protected admin pages
-import AdminAnalyticsPage from "./pages/admin/AdminAnalyticsPage";
-import AdminChatsPage from "./pages/admin/AdminChatsPage";
+// protected admin pages:
+import AdminUsersPage from "./pages/admin/AdminUsersPage";
+import AdminEditUserPage from "./pages/admin/AdminEditUserPage";
+import AdminProductsPage from "./pages/admin/AdminProductsPage";
 import AdminCreateProductPage from "./pages/admin/AdminCreateProductPage";
 import AdminEditProductPage from "./pages/admin/AdminEditProductPage";
-import AdminEditUserPage from "./pages/admin/AdminEditUserPage";
-import AdminOderDetailsPage from "./pages/admin/AdminOrderDetailsPage";
 import AdminOrdersPage from "./pages/admin/AdminOrdersPage";
-import AdminProductsPage from "./pages/admin/AdminProductsPage";
-import AdminUsersPage from "./pages/admin/AdminUsersPage";
-
-import ScrollTotop from "./utils/ScrollToTop";
+import AdminOrderDetailsPage from "./pages/admin/AdminOrderDetailsPage";
+import AdminChatsPage from "./pages/admin/AdminChatsPage";
+import AdminAnalyticsPage from "./pages/admin/AdminAnalyticsPage";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
-    <ScrollTotop/>
+    <ScrollToTop />
       <HeaderComponent />
       <Routes>
         <Route element={<RoutesWithUserChatComponent />}>
-          {/** publicly available */}
+          {/* publicly available routes: */}
           <Route path="/" element={<HomePage />} />
           <Route path="/product-list" element={<ProductListPage />} />
           <Route path="/product-details" element={<ProductDetailsPage />} />
@@ -53,9 +52,10 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="*" element="Page not exists 404" />
         </Route>
+        {/* <Route path="/" component={HomePage} />  in previous versions of react-router-dom */}
 
-        {/** user protected routes: */}
-        <Route element={<ProtectedRoutesComponet admin={false} />}>
+        {/* user protected routes: */}
+        <Route element={<ProtectedRoutesComponent admin={false} />}>
           <Route path="/user" element={<UserProfilePage />} />
           <Route path="/user/my-orders" element={<UserOrdersPage />} />
           <Route path="/user/cart-details" element={<UserCartDetailsPage />} />
@@ -65,8 +65,8 @@ function App() {
           />
         </Route>
 
-        {/** admin protected routes: */}
-        <Route element={<ProtectedRoutesComponet admin={true} />}>
+        {/* admin protected routes: */}
+        <Route element={<ProtectedRoutesComponent admin={true} />}>
           <Route path="/admin/users" element={<AdminUsersPage />} />
           <Route path="/admin/edit-user" element={<AdminEditUserPage />} />
           <Route path="/admin/products" element={<AdminProductsPage />} />
@@ -80,8 +80,8 @@ function App() {
           />
           <Route path="/admin/orders" element={<AdminOrdersPage />} />
           <Route
-            path="/admin/order-details"
-            element={<AdminOderDetailsPage />}
+            path="/admin/order-details/:id"
+            element={<AdminOrderDetailsPage />}
           />
           <Route path="/admin/chats" element={<AdminChatsPage />} />
           <Route path="/admin/analytics" element={<AdminAnalyticsPage />} />
@@ -93,3 +93,4 @@ function App() {
 }
 
 export default App;
+

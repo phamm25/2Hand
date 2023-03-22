@@ -1,42 +1,41 @@
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Badge from "react-bootstrap/Badge";
-import Dropdown from "react-bootstrap/Dropdown";
-import InputGroup from "react-bootstrap/InputGroup";
+import {
+  Navbar,
+  Nav,
+  Container,
+  NavDropdown,
+  Badge,
+  Form,
+  DropdownButton,
+  Dropdown,
+  Button,
+  InputGroup,
+} from "react-bootstrap";
 
-import { LinkContainer } from "react-router-bootstrap"; // allow not reloading page when navigate to homepage -> better user experience
+import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
+import { logout } from "../redux/actions/userActions";
+import { useDispatch } from "react-redux";
 
 const HeaderComponent = () => {
+    const dispatch = useDispatch();
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand href="/">2hand</Navbar.Brand>
+          <Navbar.Brand href="/">BEST ONLINE SHOP</Navbar.Brand>
         </LinkContainer>
-
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <InputGroup>
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  All
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item>Textbooks</Dropdown.Item>
-                  <Dropdown.Item>Clothings</Dropdown.Item>
-                  <Dropdown.Item>Electronics</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Form.Control type="text" placeholder="Search items" />
-              <Button variant="success">
-                <i className="bi bi-binoculars"> Search</i>
+              <DropdownButton id="dropdown-basic-button" title="All">
+                <Dropdown.Item>Electronics</Dropdown.Item>
+                <Dropdown.Item>Cars</Dropdown.Item>
+                <Dropdown.Item>Books</Dropdown.Item>
+              </DropdownButton>
+              <Form.Control type="text" placeholder="Search in shop ..." />
+              <Button variant="warning">
+                <i className="bi bi-search text-dark"></i>
               </Button>
             </InputGroup>
           </Nav>
@@ -48,19 +47,18 @@ const HeaderComponent = () => {
               </Nav.Link>
             </LinkContainer>
 
-            <NavDropdown title="Minh Pham" id="collasible-nav-dropdown" >
+            <NavDropdown title="John Doe" id="collasible-nav-dropdown">
               <NavDropdown.Item
-                eventKey="/user/my-orders" // event key to highlight current path with blue background
+                eventKey="/user/my-orders"
                 as={Link}
                 to="/user/my-orders"
-                // className="bg-success"
               >
                 My orders
-              </NavDropdown.Item >
+              </NavDropdown.Item>
               <NavDropdown.Item eventKey="/user" as={Link} to="/user">
                 My profile
               </NavDropdown.Item>
-              <NavDropdown.Item>Logout</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => dispatch(logout())}>Logout</NavDropdown.Item>
             </NavDropdown>
             <LinkContainer to="/login">
               <Nav.Link>Login</Nav.Link>
@@ -85,3 +83,4 @@ const HeaderComponent = () => {
 };
 
 export default HeaderComponent;
+

@@ -14,7 +14,7 @@ const uploadImagesApiRequest = async (images, productId) => {
     await axios.post("/api/products/admin/upload?productId=" + productId, formData);
 }
 
-const uploadImagesCloudinaryApiRequest = (images) => {
+const uploadImagesCloudinaryApiRequest = (images,productId) => {
     const url = "https://api.cloudinary.com/v1_1/jkhbnc-366gs/image/upload";
     const formData = new FormData();
     for (let i = 0; i < images.length; i++) {
@@ -29,7 +29,7 @@ const uploadImagesCloudinaryApiRequest = (images) => {
             return response.json();
         })
         .then(data => {
-            console.log(data);
+            axios.post("/api/products/admin/upload?cloudinary=true&productId=" + productId, data);
         })
     }
 }

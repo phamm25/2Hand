@@ -1,38 +1,23 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import { Card, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-const CetegoryCardComponent = ({ category, idx }) => {
-  const images = [
-    "/images/sweater.png",
-    "/images/sweater.png",
-    "/images/sweater.png",
-    "/images/sweater.png",
-    "/images/sweater.png",
-    "/images/sweater.png",
-    "/images/sweater.png",
-    "/images/sweater.png",
-    "/images/sweater.png",
-    "/images/sweater.png",
-    "/images/sweater.png",
-    "/images/sweater.png",
-    
-  ];
+const CategoryCardComponent = ({ category, idx }) => {
+  
   return (
     <Card>
-      <Card.Img crossOrigin="anonymous" variant="top" src={images[idx]} />
+      <Card.Img crossOrigin="anonymous" variant="top" src={category.image ?? null} />
       <Card.Body>
-        <Card.Title>{category}</Card.Title>
+        <Card.Title>{category.name}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {category.description}
         </Card.Text>
-        <LinkContainer to="/product-list">
-          <Button variant="success">Go to Category</Button>
+        <LinkContainer to={`/product-list/category/${category.name}`}>
+          <Button variant="primary">Go to the Category</Button>
         </LinkContainer>
       </Card.Body>
     </Card>
   );
 };
 
-export default CetegoryCardComponent;
+export default CategoryCardComponent;
+

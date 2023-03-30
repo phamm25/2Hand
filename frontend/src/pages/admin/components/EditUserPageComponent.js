@@ -1,9 +1,19 @@
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const EditUserPageComponent = ({ updateUserApiRequest }) => {
+const EditUserPageComponent = ({ updateUserApiRequest, fetchUser }) => {
   const [validated, setValidated] = useState(false);
+    const [user, setUser] = useState([]);
+    const [isAdminState, setIsAdminState] = useState(false);
+    const [updateUserResponseState, setUpdateUserResponseState] = useState({ message: "", error: "" });
+
+    const { id } = useParams();
+    const navigate = useNavigate();
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -13,11 +23,29 @@ const EditUserPageComponent = ({ updateUserApiRequest }) => {
     const email = form.email.value;
     const isAdmin = form.isAdmin.checked;
     if (event.currentTarget.checkValidity() === true) {
-        updateUserApiRequest(name, lastName, email, isAdmin);
+        updateUserApiRequest(id, name, lastName, email, isAdmin)
+        .then(data => {
+            if (data === "user updated") {
+                navigate("/admin/users");
+            }
+        })
+        .catch(er => {
+            setUpdateUserResponseState({ error: er.response.data.message ? er.response.data.message : er.response.data });
+        })
     }
 
     setValidated(true);
   };
+
+    useEffect(() => {
+        fetchUser(id)
+        .then(data => {
+            setUser(data);
+            setIsAdminState(data.isAdmin);
+        })
+        .catch((er) => console.log(er.response.data.message ? er.response.data.message : er.response.data));
+    }, [id])
+
   return (
     <Container>
       <Row className="justify-content-md-center mt-5">
@@ -35,7 +63,7 @@ const EditUserPageComponent = ({ updateUserApiRequest }) => {
                 name="name"
                 required
                 type="text"
-                defaultValue="John"
+                defaultValue={user.name}
               />
             </Form.Group>
 
@@ -45,7 +73,7 @@ const EditUserPageComponent = ({ updateUserApiRequest }) => {
                 name="lastName"
                 required
                 type="text"
-                defaultValue="Doe"
+                defaultValue={user.lastName} 
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -54,17 +82,18 @@ const EditUserPageComponent = ({ updateUserApiRequest }) => {
                 name="email"
                 required
                 type="email"
-                defaultValue="John@email.com"
+                defaultValue={user.email}
               />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check name="isAdmin" type="checkbox" label="Is admin" />
+              <Form.Check name="isAdmin" type="checkbox" label="Is admin" checked={isAdminState} onChange={(e) => setIsAdminState(e.target.checked)} />
             </Form.Group>
 
             <Button variant="primary" type="submit">
               UPDATE
             </Button>
+            {updateUserResponseState.error}
           </Form>
         </Col>
       </Row>

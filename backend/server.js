@@ -12,6 +12,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload());
 
+io.on("connection", (socket) => {
+    socket.on("client sends message", (msg) => {
+        console.log(msg);
+    })
+})
+
 const apiRoutes = require("./routes/apiRoutes");
 
 app.get("/", async (req, res, next) => {

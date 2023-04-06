@@ -17,6 +17,7 @@ import { logout } from "../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCategories } from "../redux/actions/categoryActions";
+import socketIOClient from "socket.io-client";
 
 const HeaderComponent = () => {
   const dispatch = useDispatch();
@@ -48,6 +49,15 @@ const HeaderComponent = () => {
          navigate("/product-list");
      }
   }
+
+  useEffect(() => {
+      if (userInfo.isAdmin) {
+          const socket = socketIOClient();
+          socket.on("server sends message from client to admin", ({message}) => {
+             console.log(message); 
+          })
+      }
+  },[userInfo.isAdmin])
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

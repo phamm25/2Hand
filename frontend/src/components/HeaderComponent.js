@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCategories } from "../redux/actions/categoryActions";
 import socketIOClient from "socket.io-client";
-import { setChatRooms, setSocket, setMessageReceived } from "../redux/actions/chatActions";
+import { setChatRooms, setSocket, setMessageReceived, removeChatRoom } from "../redux/actions/chatActions";
 
 const HeaderComponent = () => {
   const dispatch = useDispatch();
@@ -65,6 +65,10 @@ const HeaderComponent = () => {
             dispatch(setChatRooms(user, message));      
              dispatch(setMessageReceived(true));  
              audio.play();
+          })
+          socket.on("disconnected", ({reason, socketId}) => {
+            //   console.log(socketId, reason)
+            dispatch(removeChatRoom(socketId));
           })
           return () => socket.disconnect();
       }

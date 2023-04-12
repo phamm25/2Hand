@@ -11,6 +11,7 @@ const UserChatComponent = () => {
   //       {"admin": "msg"},
   //   ]
   const [chat, setChat] = useState([]);
+  const [messageReceived, setMessageReceived] = useState(false);
 
   const userInfo = useSelector((state) => state.userRegisterLogin.userInfo);
 
@@ -22,6 +23,7 @@ const UserChatComponent = () => {
           setChat((chat) => {
               return [...chat, { admin: msg }];
           })
+          setMessageReceived(true);
           const chatMessages = document.querySelector(".cht-msg");
           chatMessages.scrollTop = chatMessages.scrollHeight;
       })
@@ -33,6 +35,7 @@ const UserChatComponent = () => {
     if (e.keyCode && e.keyCode !== 13) {
       return;
     }
+    setMessageReceived(false);
     const msg = document.getElementById("clientChatMsg");
     let v = msg.value.trim();
     if (v === "" || v === null || v === false || !v) {
@@ -55,7 +58,8 @@ const UserChatComponent = () => {
       <input type="checkbox" id="check" />
       <label className="chat-btn" htmlFor="check">
         <i className="bi bi-chat-dots comment"></i>
-        <span className="position-absolute top-0 start-10 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
+        {messageReceived && <span className="position-absolute top-0 start-10 translate-middle p-2 bg-danger border border-light rounded-circle"></span>}
+        
         <i className="bi bi-x-circle close"></i>
       </label>
       <div className="chat-wrapper">

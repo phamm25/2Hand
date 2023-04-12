@@ -54,6 +54,7 @@ const HeaderComponent = () => {
 
   useEffect(() => {
       if (userInfo.isAdmin) {
+          var audio = new Audio("/audio/chat-msg.mp3");
           const socket = socketIOClient();
           socket.on("server sends message from client to admin", ({message}) => {
               dispatch(setSocket(socket));
@@ -62,7 +63,9 @@ const HeaderComponent = () => {
         //   };
             dispatch(setChatRooms("exampleUser", message));      
              dispatch(setMessageReceived(true));  
+             audio.play();
           })
+          return () => socket.disconnect();
       }
   },[userInfo.isAdmin])
 

@@ -93,7 +93,7 @@ const UserChatComponent = () => {
                   </p>
                 )}
                 {item.admin && (
-                  <p className="bg-primary p-3 ms-4 text-light rounded-pill">
+                  <p className="bg-success p-3 ms-4 text-light" style={{'borderRadius':'10px'}}>
                     <b>Support wrote:</b> {item.admin}
                   </p>
                 )}

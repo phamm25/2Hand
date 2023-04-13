@@ -128,7 +128,7 @@ const ProductListPageComponent = ({ getProducts, categories }) => {
               />
             </ListGroup.Item>
             <ListGroup.Item>
-              <Button variant="primary" onClick={handleFilters}>
+              <Button onClick={handleFilters}>
                 Filter
               </Button>{" "}
               {showResetFiltersButton && (

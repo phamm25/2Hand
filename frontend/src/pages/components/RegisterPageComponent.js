@@ -145,7 +145,7 @@ const RegisterPageComponent = ({
               </Col>
             </Row>
 
-            <Button type="submit">
+            <Button type="submit" variant="success">
               {registerUserResponseState &&
               registerUserResponseState.loading === true ? (
                 <Spinner

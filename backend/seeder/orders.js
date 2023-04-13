@@ -28,9 +28,9 @@ const orders = Array.from({length: 22}).map((_, idx) => {
             }
         ],
         paymentMethod: "PayPal",
-        isPaid: false,
+        isPaid: true,
         isDelivered: false,
-        createdAt: `2022-03-${day}T${hour}:12:36.490+00:00`
+        createdAt: `2023-03-${day}T${hour}:12:36.490+00:00`
     }
 })
 

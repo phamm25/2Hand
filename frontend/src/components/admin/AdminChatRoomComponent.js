@@ -63,7 +63,8 @@ const AdminChatRoomComponent = ({ chatRoom, roomIndex, socket, socketUser }) => 
                 {msg.client && (
                   <p
                     key={idx}
-                    className="bg-primary p-3 ms-4 text-light rounded-pill"
+                    className="bg-success p-3 ms-4 text-light"
+                    style={{'borderRadius':'10px'}}
                   >
                     <b>User wrote:</b> {msg.client}
                   </p>

@@ -49,7 +49,7 @@ const CartPageComponent = ({
             </ListGroup.Item>
             <ListGroup.Item>
               <LinkContainer to="/user/cart-details">
-                <Button disabled={cartSubtotal === 0} type="button">Proceed To Checkout</Button>
+                <Button disabled={cartSubtotal === 0} type="button" variant="success">Proceed To Checkout</Button>
               </LinkContainer>
             </ListGroup.Item>
           </ListGroup>

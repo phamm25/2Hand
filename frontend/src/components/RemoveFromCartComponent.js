@@ -5,7 +5,7 @@ const RemoveFromCartComponent = ({ productID, orderCreated, quantity, price, rem
        <Button
        disabled={orderCreated}
        type="button"
-       variant="secondary"
+       variant="danger"
        onClick={removeFromCartHandler ? () => removeFromCartHandler(productID, quantity, price) : undefined}
        >
          <i className="bi bi-trash"></i>  

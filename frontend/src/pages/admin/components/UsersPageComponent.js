@@ -65,7 +65,7 @@ const UsersPageComponent = ({ fetchUsers, deleteUser }) => {
                   </td>
                   <td>
                     <LinkContainer to={`/admin/edit-user/${user._id}`}>
-                      <Button className="btn-sm">
+                      <Button className="btn-sm" variant="success">
                         <i className="bi bi-pencil-square"></i>
                       </Button>
                     </LinkContainer>

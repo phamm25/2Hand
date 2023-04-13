@@ -83,7 +83,7 @@ const LoginPageComponent = ({ loginUserApiRequest,reduxDispatch, setReduxUserSta
               </Col>
             </Row>
 
-            <Button variant="primary" type="submit">
+            <Button variant="success" type="submit">
               {loginUserResponseState &&
               loginUserResponseState.loading === true ? (
                 <Spinner

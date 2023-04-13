@@ -19,7 +19,7 @@ const ProductCarouselComponent = ({ bestSellers }) => {
           />
           <Carousel.Caption>
             <LinkContainer style={cursorP} to={`/product-details/${item._id}`}>
-              <h3>Bestseller in {item.category} Category</h3>
+              <h3>Bestseller for {item.category.split('/')[0]}</h3>
             </LinkContainer>
             <p>{item.description}</p>
           </Carousel.Caption>

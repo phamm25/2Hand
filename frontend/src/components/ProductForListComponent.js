@@ -25,7 +25,7 @@ const ProductForListComponent = ({ productId, name, description, price, images, 
             <Card.Text className="h4">
               ${price}{" "}
               <LinkContainer to={`/product-details/${productId}`}>
-                <Button variant="danger">See product</Button>
+                <Button variant="success">See product</Button>
               </LinkContainer>
             </Card.Text>
           </Card.Body>

@@ -12,7 +12,7 @@ const CategoryCardComponent = ({ category, idx }) => {
           {category.description}
         </Card.Text>
         <LinkContainer to={`/product-list/category/${category.name}`}>
-          <Button variant="primary">Go to the Category</Button>
+          <Button variant="success">Go to the Category</Button>
         </LinkContainer>
       </Card.Body>
     </Card>

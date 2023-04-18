@@ -20,5 +20,5 @@ const RatingFilterComponent = ({setRatingsFromFilter}) => {
   );
 };
 
-export default RatingFilterComponent;s
+export default RatingFilterComponent;
 

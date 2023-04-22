@@ -134,7 +134,7 @@ const HeaderComponent = () => {
             {userInfo.isAdmin ? (
               <LinkContainer to="/admin/orders">
                 <Nav.Link>
-                  Admin
+                  Adminss
                   {messageReceived && (
                     <span className="position-absolute top-1 start-10 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
                   )}

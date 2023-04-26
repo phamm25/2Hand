@@ -98,7 +98,7 @@ app.use((error, req, res, next) => {
       message: error.message,
     });
   }
-});ss
+});
 
 const PORT = process.env.PORT || 5000;
 

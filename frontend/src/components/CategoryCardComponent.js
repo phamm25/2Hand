@@ -19,5 +19,5 @@ const CategoryCardComponent = ({ category, idx }) => {
   );
 };
 
-export default CategoryCardComponent;
+export default CategoryCardComponent;ss
 

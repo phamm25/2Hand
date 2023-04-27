@@ -100,7 +100,7 @@ app.use((error, req, res, next) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;ss
+const PORT = process.env.PORT || 5000;
 
 httpServer.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

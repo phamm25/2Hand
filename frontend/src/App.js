@@ -60,7 +60,7 @@ function App() {
         </Route>
         {/* <Route path="/" component={HomePage} />  in previous versions of react-router-dom */}
 
-        {/* user protected routes: */}ss
+        {/* user protected routes: */}
         <Route element={<ProtectedRoutesComponent admin={false} />}>
           <Route path="/user" element={<UserProfilePage />} />
           <Route path="/user/my-orders" element={<UserOrdersPage />} />

@@ -52,7 +52,7 @@ const CreateProductPageComponent = ({
       name: form.name.value,
       description: form.description.value,
       count: form.count.value,
-      price: form.price.value,
+      price: form.price.value,ss
       category: form.category.value,
       attributesTable: attributesTable,
     };

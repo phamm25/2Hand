@@ -85,7 +85,7 @@ const CreateProductPageComponent = ({
           setCreateProductResponseState({
             error: er.response.data.message
               ? er.response.data.message
-              : er.response.data,
+              : er.response.data,ss
           });
         });
     }

@@ -86,7 +86,7 @@ const CreateProductPageComponent = ({
             error: er.response.data.message
               ? er.response.data.message
               : er.response.data,
-          });
+          });ss
         });
     }
 

@@ -68,7 +68,7 @@ const CreateProductPageComponent = ({
               // to do: change to !==
               uploadImagesApiRequest(images, data.productId)
                 .then((res) => {})
-                .catch((er) =>
+                .catch((er) =>ss
                   setIsCreating(
                     er.response.data.message
                       ? er.response.data.message

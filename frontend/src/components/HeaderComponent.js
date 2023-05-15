@@ -167,7 +167,7 @@ const HeaderComponent = () => {
                 <LinkContainer to="/register">
                   <Nav.Link>Register</Nav.Link>
                 </LinkContainer>
-              </>ss
+              </>
             )}
 
             <LinkContainer to="/cart">

@@ -188,13 +188,3 @@ const HeaderComponent = () => {
 
 export default HeaderComponent;
 
-_addRatioToExpenseAndIncomeReportWorksheet = (exportData) => {
-  const categorySums = _.chain(exportData)
-  .groupBy('categoryName')
-  .mapValues((items) => _.sumBy(items, 'amount'))
-  .value();
-
-  console.log(categorySums);
-
-  
-}

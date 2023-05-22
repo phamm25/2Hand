@@ -23,7 +23,7 @@ const AddedToCartMessageComponent = ({ showCartMessage, setShowCartMessage }) =>
         </Link>
       </p>
     </Alert>
-  );
+  );ss
 };
 
 export default AddedToCartMessageComponent;

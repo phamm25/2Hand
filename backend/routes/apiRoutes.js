@@ -24,6 +24,6 @@ app.get("/get-token", (req, res) => {
 app.use("/products", productRoutes)
 app.use("/categories", categoryRoutes)
 app.use("/users", userRoutes)
-app.use("/orders", orderRoutes)
+app.use("/orders", orderRoutes)ss
 
 module.exports = app
